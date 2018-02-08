@@ -1,15 +1,15 @@
 title: lgal
 author: lausek
-description: a small js-gallery
+description: "a small js-gallery"
 
 library:
-	repo: https://github.com/lausek/lgal
-	link: https://rawgit.com/lausek/lgal/master/lgal.js
+    repo: "https://github.com/lausek/lgal"
+    link: "https://rawgit.com/lausek/lgal/master/lgal.js"
 
 highlighter: rouge
 
 sass:
-	style: compressed
+    style: compressed
 
 defaults:
   - scope:
