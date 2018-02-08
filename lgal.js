@@ -150,6 +150,6 @@
 
 document.addEventListener("DOMContentLoaded", function() {
 
-    document.lgal({class_prefix: "gallery"});
+    document.lgal({class_prefix: "lgal"});
 
 });
