@@ -8,6 +8,9 @@ library:
 
 highlighter: rouge
 
+gems:
+  - jekyll-octicons
+
 sass:
     style: compressed
 
