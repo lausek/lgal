@@ -8,6 +8,6 @@ highlighter: rouge
 
 defaults:
   - scope:
-  		path: "images"
+      path: "images"
     values:
-      	image: true
+      image: true
