@@ -2,8 +2,6 @@
 layout: default
 ---
 
-## {{ site.title }}
-
 {{ site.description }}
 
 {% assign images = site.statis_files | where: "image", true %}
