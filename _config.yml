@@ -7,7 +7,7 @@ librarylink: https://raw.githubusercontent.com/lausek/lgal/master/lgal.js
 highlighter: rouge
 
 defaults:
-  - scope
-      path: "images"
+  - scope:
+  		path: "images"
     values:
-      image: true
+      	image: true
