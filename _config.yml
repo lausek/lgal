@@ -1,6 +1,6 @@
 title: lgal
-baseurl: lgal
 author: lausek
+baseurl: /lgal
 description: "a small js-gallery"
 
 library:
@@ -9,7 +9,7 @@ library:
 
 highlighter: rouge
 
-gems:
+plugins:
   - jekyll-octicons
 
 sass:

@@ -1,5 +1,6 @@
-$vit = white;
-$svart = #252525;
+---
+
+---
 
 body {
 	margin: 0;
@@ -7,8 +8,8 @@ body {
 }
 
 header {
-	color: $vit;
-	background-color: $svart;
+	color: white;
+	background-color: #252525;
 	padding: 10px;
 }
 
@@ -22,7 +23,17 @@ h1 {
 	margin: 0;
 }
 
+main {
+    padding: 10px;
+}
+
 p {
 	padding: 10px;
 	line-height: 1.5;
+}
+
+.gallery-peek {
+    width: 128px;
+    height: 128px;
+    padding: 5px;
 }

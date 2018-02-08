@@ -1,0 +1,9 @@
+{% images=imagesassign str = '' %}
+
+{% for image in images %}
+{% if image.extname == '.jpg' or image.extname == '.png' %}
+{% assign str = str | append: '<img class="gallery-peek" src="' | append: site.baseurl | append: image.path | append: '" />' %}
+{% endif %}
+{% endfor %}
+
+{{ str }}
