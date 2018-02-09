@@ -1,5 +1,7 @@
 (function(doc) {
 
+    "use strict";
+
     if(doc.lgal !== undefined) {
         throw "Couldn't add lgal to document!";
     }
@@ -14,8 +16,11 @@
         * selected_node: currently displayed peek
         * prev_button, next_button: back/forward buttons
         */
-        var showcase, selected_node, title_node;
-        var prev_button, next_button;
+        var showcase;
+        var selected_node;
+        var title_node;
+        var prev_button;
+        var next_button;
 
         function contains_peek(cls) {
             return cls.indexOf(class_prefix+"-peek") >= 0;
@@ -28,7 +33,9 @@
         function change_to(img_node) {
 
             /* Prevent click on navigation buttons from displaying a null node */
-            if(img_node === null || !contains_peek(img_node.className)) return;
+            if(img_node === null || !contains_peek(img_node.className)) {
+                return;
+            }
 
             if(!doc.body.contains(fullscreen)) {
                 /* If fullscreen mode isn't already set */
@@ -45,10 +52,10 @@
                                     .split(/\//g)
                                     .pop();
 
-            prev_button.firstChild.style["color"] = child_is_peek(selected_node.parentNode.previousElementSibling)
+            prev_button.firstChild.style.color = child_is_peek(selected_node.parentNode.previousElementSibling)
                                                     ? "inherit" : "transparent";
 
-            next_button.firstChild.style["color"] = child_is_peek(selected_node.parentNode.nextElementSibling)
+            next_button.firstChild.style.color = child_is_peek(selected_node.parentNode.nextElementSibling)
                                                     ? "inherit" : "transparent";
 
         }
@@ -94,7 +101,7 @@
 
 
             var outer_showcase = doc.createElement("span");
-            outer_showcase.style["display"] = "table-cell";
+            outer_showcase.style.display = "table-cell";
             outer_showcase.style["vertical-align"] = "middle";
 
             showcase = doc.createElement("img");
@@ -102,22 +109,26 @@
             outer_showcase.appendChild(showcase);
 
             var separator = doc.createElement("div");
-            separator.style["display"] = "table";
-            separator.style["width"] = "100%";
-            separator.style["height"] = "100%";
+            separator.style.display = "table";
+            separator.style.width = "100%";
+            separator.style.height = "100%";
 
             fullscreen_node.appendChild(close_cross);
             fullscreen_node.appendChild(title_node);
 
             /* Use parentNode here because img is wrapped in a-tag */
             prev_button = create_button("<", function() {
-                if(!selected_node.parentNode.previousElementSibling) return;
+                if(!selected_node.parentNode.previousElementSibling) {
+                    return;
+                }
                 change_to(selected_node.parentNode.previousElementSibling.firstChild);
             });
             prev_button.style["text-align"] = "left";
 
             next_button = create_button(">", function() {
-                if(!selected_node.parentNode.nextElementSibling) return;
+                if(!selected_node.parentNode.nextElementSibling) {
+                    return;
+                }
                 change_to(selected_node.parentNode.nextElementSibling.firstChild);
             });
             next_button.style["text-align"] = "right";
@@ -134,7 +145,9 @@
         doc.body.addEventListener("click", function(e) {
 
             /* Only subscribe to global click and check if target is a peek */
-            if(!contains_peek(e.target.className)) return;
+            if(!contains_peek(e.target.className)) {
+                return;
+            }
 
             e.preventDefault();
             e.stopPropagation();
@@ -149,7 +162,7 @@
 }(document));
 
 document.addEventListener("DOMContentLoaded", function() {
-
+	
     document.lgal({class_prefix: "lgal"});
 
 });
