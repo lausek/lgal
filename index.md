@@ -7,7 +7,9 @@ layout: default
 {% assign images = site.static_files | where: "image", true %}
 
 ### Single
-<img class="lgal-peek" src="{{ site.baseurl }}{{ images[1].path }}" />
+<div class="lgal-gallery">
+<a><img class="lgal-peek" src="{{ site.baseurl }}{{ images[1].path }}" /></a>
+</div>
 
 ### Gallery 1
 {% include gallery.html %}

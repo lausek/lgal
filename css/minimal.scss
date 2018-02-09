@@ -1,6 +1,8 @@
 ---
 
 ---
+$vit = white;
+$svart = #252525;
 
 body {
 	margin: 0;
@@ -8,9 +10,13 @@ body {
 }
 
 header {
-	color: white;
-	background-color: #252525;
+	color: $vit;
+	background-color: $svart;
 	padding: 10px;
+}
+
+.octicon {
+    fill: $vit;
 }
 
 h1,
