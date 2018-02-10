@@ -1,8 +1,8 @@
 ---
 
 ---
-$vit = white;
-$svart = #252525;
+$vit: white;
+$svart: #252525;
 
 body {
 	margin: 0;
@@ -10,6 +10,8 @@ body {
 }
 
 header {
+    display: flex;
+    align-items: center;
 	color: $vit;
 	background-color: $svart;
 	padding: 10px;
@@ -27,6 +29,10 @@ nav {
 
 h1 {
 	margin: 0;
+}
+
+nav {
+    text-align: right;
 }
 
 main {
