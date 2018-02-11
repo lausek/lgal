@@ -3,7 +3,7 @@
     'use strict';
 
     if(doc.lgal !== undefined) {
-        throw 'Couldn\'t add lgal to document!';
+        throw "Couldn\'t add lgal to document!";
     }
 
     doc.lgal = function(settings) {
@@ -168,6 +168,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
 	
-    document.lgal({class_prefix: 'lgal'});
+    document.lgal();
 
 });
