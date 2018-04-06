@@ -5,7 +5,7 @@ description: "a small js-gallery"
 
 library:
     repo: "https://github.com/lausek/lgal"
-    link: "https://rawgit.com/lausek/lgal/master/lgal.js"
+    link: "https://rawgit.com/lausek/lgal/master/lgal.min.js"
     style: "https://rawgit.com/lausek/lgal/master/lgal.css"
 
 highlighter: rouge
