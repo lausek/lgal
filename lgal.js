@@ -10,12 +10,13 @@
 
         settings = settings || {};
         var class_prefix = settings.class_prefix || 'lgal';
+        var full_attr = settings.full_attribute || 'full';
 
         /*
-        * showcase: node for peek display
-        * selected_node: currently displayed peek
-        * prev_button, next_button: back/forward buttons
-        */
+         * showcase: node for peek display
+         * selected_node: currently displayed peek
+         * prev_button, next_button: back/forward buttons
+         */
         var showcase;
         var selected_node;
         var title_node;
@@ -45,28 +46,31 @@
             /* Change currently displayed node */
             selected_node = img_node;
             /* Change displayed image */
-            showcase.src = img_node.src;
-            title_node.innerHTML = decodeURI(img_node.src)
-                                    .replace(/_/g, ' ')
-                                    .replace(/\.[a-z0-9]*$/i, '')
-                                    .split(/\//g)
-                                    .pop();
+            showcase.src = img_node.hasAttribute(full_attr) 
+                ? img_node.getAttribute(full_attr) 
+                : img_node.src;
+
+            title_node.innerHTML = decodeURI(showcase.src)
+                .replace(/_/g, ' ')
+                .replace(/\.[a-z0-9]*$/i, '')
+                .split(/\//g)
+                .pop();
 
             prev_button.firstChild.style.color = child_is_peek(selected_node.parentNode.previousElementSibling)
-                                                    ? 'inherit' : 'transparent';
+                ? 'inherit' : 'transparent';
 
             next_button.firstChild.style.color = child_is_peek(selected_node.parentNode.nextElementSibling)
-                                                    ? 'inherit' : 'transparent';
+                ? 'inherit' : 'transparent';
 
         }
 
         function close_fullscreen() {
 
             /* Always make sure there is no node selected */
-        	if(doc.body.contains(fullscreen)) {
-        		selected_node = null;
-        		doc.body.removeChild(fullscreen);        		
-        	}
+            if(doc.body.contains(fullscreen)) {
+                selected_node = null;
+                doc.body.removeChild(fullscreen);        		
+            }
 
         }
 
@@ -96,9 +100,9 @@
             close_cross.innerHTML = 'X';
             close_cross.addEventListener('click', close_fullscreen);
             window.onkeyup = function(e) {
-            	if(e.key === 'Escape') {
-            		close_fullscreen();
-            	}
+                if(e.key === 'Escape') {
+                    close_fullscreen();
+                }
             };
 
             title_node = doc.createElement('span');
@@ -167,7 +171,7 @@
 }(document));
 
 document.addEventListener('DOMContentLoaded', function() {
-	
+
     document.lgal();
 
 });
