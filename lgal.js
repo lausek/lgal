@@ -46,7 +46,13 @@
             /* Change currently displayed node */
             selected_node = img_node;
             /* Change displayed image */
-            showcase.src = img_node.hasAttribute(full_attr) 
+            showcase.src = ""; 
+            
+            var loading_image = new Image();
+            loading_image.onload = function() {
+                showcase.src = this.src 
+            };
+            loading_image.src = img_node.hasAttribute(full_attr) 
                 ? img_node.getAttribute(full_attr) 
                 : img_node.src;
 
@@ -107,7 +113,6 @@
 
             title_node = doc.createElement('span');
             title_node.style['padding-left'] = '10px';
-
 
             var outer_showcase = doc.createElement('span');
             outer_showcase.style.display = 'table-cell';
