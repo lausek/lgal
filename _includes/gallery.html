@@ -1,9 +1,10 @@
-{% assign str = '' %}
-
-{% for image in images %}
-{% if image.extname == '.jpg' or image.extname == '.png' %}
-{% assign str = str | append: '<a><img class="lgal-peek" src="' | append: site.baseurl | append: image.path | append: '" /></a>' %}
-{% endif %}
-{% endfor %}
-
-{{ '<div class="lgal-gallery">' | append: str | append: '</div>' }}
+<div class="lgal-gallery">
+    {% for image in images %}
+        {% if image.extname == '.jpg' or image.extname == '.png' %}
+        {% assign url = image.path %}
+        <a><img class="lgal-peek" 
+            src="{{ "thumbs" | append: url | absolute_url }}" 
+            full="{{ url | absolute_url }}" /></a>
+        {% endif %}
+    {% endfor %}
+</div>
