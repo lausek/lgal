@@ -2,7 +2,7 @@
 layout: default
 ---
 
-{{ site.description }}
+{% include README.md %}
 
 {% assign images = site.static_files | where: "image", true %}
 
