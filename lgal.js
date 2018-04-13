@@ -47,7 +47,7 @@
             selected_node = img_node;
             /* Change displayed image */
             showcase.src = ""; 
-            
+
             var loading_image = new Image();
             loading_image.onload = function() {
                 showcase.src = this.src 
@@ -96,6 +96,20 @@
 
         }
 
+        function try_prev() {
+            if(!selected_node.parentNode.previousElementSibling) {
+                return;
+            }
+            change_to(selected_node.parentNode.previousElementSibling.firstChild);
+        }
+
+        function try_next() {
+            if(!selected_node.parentNode.nextElementSibling) {
+                return;
+            }
+            change_to(selected_node.parentNode.nextElementSibling.firstChild);
+        }
+
         var fullscreen = (function() {
 
             var fullscreen_node = doc.createElement('div');
@@ -108,6 +122,10 @@
             window.onkeyup = function(e) {
                 if(e.key === 'Escape') {
                     close_fullscreen();
+                } else if (e.key === 'ArrowRight') {
+                    try_next();
+                } else if (e.key === 'ArrowLeft') {
+                    try_prev();
                 }
             };
 
@@ -131,20 +149,10 @@
             fullscreen_node.appendChild(title_node);
 
             /* Use parentNode here because img is wrapped in a-tag */
-            prev_button = create_button('<', function() {
-                if(!selected_node.parentNode.previousElementSibling) {
-                    return;
-                }
-                change_to(selected_node.parentNode.previousElementSibling.firstChild);
-            });
+            prev_button = create_button('<', try_prev);
             prev_button.style['text-align'] = 'left';
 
-            next_button = create_button('>', function() {
-                if(!selected_node.parentNode.nextElementSibling) {
-                    return;
-                }
-                change_to(selected_node.parentNode.nextElementSibling.firstChild);
-            });
+            next_button = create_button('>', try_next);
             next_button.style['text-align'] = 'right';
 
             separator.appendChild(prev_button);
